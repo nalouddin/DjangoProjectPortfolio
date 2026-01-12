@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {#    {% for review in reviews %}#}
+    {#        <div class="card mb-3">#}
+    {#            <div class="card-header">#}
+    {#                {{ review.project.title }}#}
+    {#            </div>#}
+    {#            <div class="card-body">#}
+    {#                <h5 class="card-title">{{ review.project.title }}</h5>#}
+    {#                <p class="card-text">{{ review.project.description }}</p>#}
+    {#            </div>#}
+    {#            <div class="card-footer">#}
+    {#                Date: {{ project.created_at|date:"F j, Y, g:i a" }}#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    {% endfor %}#}
+    <h2>Loyiha haqida fikrlar</h2>
+    <table class="table table-bordered">
+        <tr>
+            <td>Loyiha nomi</td>
+            <td>{{ project.title }}</td>
+        </tr>
+        <tr>
+            <td>Texnologiyalar:</td>
+            <td>
+                <ul>
+                    {% for tag in tags %}
+                        <li>{{ tag.name }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Loyiha Haqida</td>
+            <td>{{ project.description }}</td>
+        </tr>
+    </table>
+{% endblock %}

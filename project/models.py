@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 
-class Product(models.Model):
+class Project(models.Model):
     title = models.CharField(max_length=300)
     description = models.TextField(null=True, blank=True)
     demo_link = models.CharField(max_length=400, null=True, blank=True)
@@ -30,9 +30,9 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=True, related_name='project_reviews')
     def __str__(self):
-        return f"{self.value} - {self.product.title}"
+        return self.value
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)

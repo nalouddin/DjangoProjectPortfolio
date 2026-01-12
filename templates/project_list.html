@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Ijobiy baho berilgan loyihalar</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Nomi</th>
+            <th scope="col">Ovozlar soni</th>
+            <th scope="col">Ovozlar nisbati</th>
+            <th scope="col">Sanasi</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reviews in reviews_m %}
+            <tr>
+                <td>{{ reviews.project.title }}</td>
+                <td>{{ reviews.project.vote_count }}</td>
+                <td>{{ reviews.project.vote_ratio }}</td>
+                <td>{{ reviews.project.created_at }}</td>
+                <td><a class="btn btn-primary" href="{% url 'project-detail' reviews.project.id %}">KO'RISH</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h2>Salbiy baho berilgan loyihalar</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Nomi</th>
+            <th scope="col">Ovozlar soni</th>
+            <th scope="col">Ovozlar nisbati</th>
+            <th scope="col">Sanasi</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reviews in reviews_p %}
+            <tr>
+                <td>{{ reviews.project.title }}</td>
+                <td>{{ reviews.project.vote_count }}</td>
+                <td>{{ reviews.project.vote_ratio }}</td>
+                <td>{{ reviews.project.created_at }}</td>
+                <td><a class="btn btn-primary" href="{% url 'project-detail' reviews.project.id %}">KO'RISH</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
